@@ -1,0 +1,7 @@
+Humre==0.2.0
+kleenexp==0.0.7
+parse==1.19.0
+pregex==2.1.1
+pygrok==1.0.0
+regex==2022.9.13
+simplematch==1.3
