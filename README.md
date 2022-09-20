@@ -44,52 +44,44 @@ Asterisks link to additional notes after the list.
 
 Functional flow style of dotted function chains.
 
-- **PythonVerbalExpressions** [➚](https://github.com/VerbalExpressions/PythonVerbalExpressions) ﹣
-  `VerEx().anything().then(" ").then("[").OR("(").anything()` [***](#pythonverbalexpressions)
-- **edify** [➚](https://github.com/luciferreeves/edify) ﹣
-  `RegexBuilder().optional().string("0x").capture().exactly(4).range("A", "F")`
-- **mre** [➚](https://github.com/alvarofpp/mre) ﹣
-  `Regex(Set(Regex("0-9")).quantifier(5), Regex("-").quantifier(0, 1)`
-- **regularize** [➚](https://github.com/georgepsarakis/regularize) ﹣
-  `pattern().literal('application.').any_number().quantify(minimum=1).case_insensitive()`
-- **re_patterns** [➚](https://github.com/Nagidal/re_patterns) ﹣
-  `Rstr("Isaac").not_followed_by("Newton").named("non_newtonians")`
+| Package                     | Github                                                            | Sample                                                                                     | Notes                           |
+|-----------------------------|-------------------------------------------------------------------|--------------------------------------------------------------------------------------------|---------------------------------|
+| **PythonVerbalExpressions** | [➚](https://github.com/VerbalExpressions/PythonVerbalExpressions) | `VerEx().anything().then(" ").then("[").OR("(").anything()`                                | [***](#pythonverbalexpressions) |
+| **edify**                   | [➚](https://github.com/luciferreeves/edify)                       | `RegexBuilder().optional().string("0x").capture().exactly(4).range("A", "F")`              |                                 |
+| **mre**                     | [➚](https://github.com/alvarofpp/mre)                             | `Regex(Set(Regex("0-9")).quantifier(5), Regex("-").quantifier(0, 1)`                       |                                 |
+| **regularize**              | [➚](https://github.com/georgepsarakis/regularize)                 | `pattern().literal('application.').any_number().quantify(minimum=1).case_insensitive()`    |                                 |
+| **re_patterns**             | [➚](https://github.com/Nagidal/re_patterns)                       | `Rstr("Isaac").not_followed_by("Newton").named("non_newtonians")`                          |                                 |
 
 #### 2. Plus-style regular expression generation
 
 Building the regex with `+` (and `|` in some cases).
 
-- **pregex** [➚](https://github.com/manoss96/pregex) ﹣
-  `Capture(OneOrMore(AnyUppercaseLetter())) + " " + Either("(", "[")` [***](#pregex)
-- **humre** [➚](https://github.com/asweigart/humre) ﹣
-  `group(SOMETHING) + " " + noncap_group(either(OPEN_PARENTHESIS, OPEN_BRACKET))` [***](#humre)
-- **objective_regex** [➚](https://github.com/VRGhost/objective_regex) ﹣
-  `Text("hello").times.any() + Raw("\s").times(5) + Text("world!").times.many()`
-- **reggie-dsl** [➚](https://github.com/romilly/reggie-dsl) ﹣
-  `dd = multiple(digit, 2, 2); name(dd + slash + dd + slash + year, 'date')`
-- **reb** [➚](https://github.com/workingenius/reb) ﹣
-  `"n(nic(':/?#'), 1) + ':' + n01('//' + n(nic('/?#'))) + n(nic('?#'))"`
+| Package             | Github                                          | Sample                                                                          | Notes          |
+|---------------------|-------------------------------------------------|---------------------------------------------------------------------------------|----------------|
+| **prerex**          | [➚](https://github.com/manoss96/pregex)         | `Capture(OneOrMore(AnyUppercaseLetter())) + " " + Either("(", "[")`             | [***](#pregex) |
+| **humre**           | [➚](https://github.com/asweigart/humre)         | `group(SOMETHING) + " " + noncap_group(either(OPEN_PARENTHESIS, OPEN_BRACKET))` | [***](#humre)  |
+| **objective_regex** | [➚](https://github.com/VRGhost/objective_regex) | `Text("hello").times.any() + Raw("\s").times(5) + Text("world!").times.many()`  |                |
+| **reggie-dsl**      | [➚](https://github.com/romilly/reggie-dsl)      | `dd = multiple(digit, 2, 2); name(dd + slash + dd + slash + year, 'date')`      |                |
+| **reb**             | [➚](https://github.com/workingenius/reb)        | `"n(nic(':/?#'), 1) + ':' + n01('//' + n(nic('/?#'))) + n(nic('?#'))"`          |                |
 
 #### 3. Format strings
 
 Focus on simple matching on sections of input, rather than full `re` functionality.
 
-- **parse** [➚](https://github.com/r1chardj0n3s/parse) ﹣
-  `"To get {amount:d} {item:w}, meet me at {time:tg}"` [***](#parse)
-- **simplematch** [➚](https://github.com/tfeldmann/simplematch) ﹣
-  `"To get {amount:int} {item}, meet me at {time}"` [***](#simplematch)
-- **pygrok** [➚](https://github.com/garyelephant/pygrok) ﹣
-  `"To get %{NUMBER:amount} %{WORD:item}, meet me at %{DATESTAMP:time}"`
+| Package           | Github                                        | Sample                                                                 | Notes               |
+|-------------------|-----------------------------------------------|------------------------------------------------------------------------|---------------------|
+| **parse**         | [➚](https://github.com/r1chardj0n3s/parse)    | `"To get {amount:d} {item:w}, meet me at {time:tg}"`                   | [***](#parse)       |
+| **simplematch**   | [➚](https://github.com/tfeldmann/simplematch) | `"To get {amount:int} {item}, meet me at {time}"`                      | [***](#simplematch) |
+| **pygrok**        | [➚](https://github.com/garyelephant/pygrok)   | `"To get %{NUMBER:amount} %{WORD:item}, meet me at %{DATESTAMP:time}"` |                     |
 
 #### 4. Full re syntax replacements
 
 Packages with a stated goal of replacing the `re` syntax.
 
-- **kleenexp** [➚](https://github.com/sonoflilit/kleenexp) ﹣
-  `"Hello. My name is [capture:name]. You killed my ['Father' | 'Hamster']. Prepare to die."`
-  [***](#kleenexp)
-- **abnormal-expressions** [➚](https://github.com/Buscedv/abnormal-expressions) ﹣
-  `'{[w "._-"]1++} "@" {[w "."]1++}'`
+| Package                  | Github                                               | Sample                                                     | Notes               |
+|--------------------------|------------------------------------------------------|------------------------------------------------------------|---------------------|
+| **kleenexp**             | [➚](https://github.com/sonoflilit/kleenexp)          | `"[#open=['('] #close=[')'] #open [0+ not #close] #open]"` | [***](#kleenexp)    |
+| **abnormal-expressions** | [➚](https://github.com/Buscedv/abnormal-expressions) | `'{[w "._-"]1++} "@" {[w "."]1++}'`                        | [***](#simplematch) |
 
 ## And the winner is...
 
@@ -110,7 +102,7 @@ r"(?P<title>.+) (\(|\[)(?P<key>[A-Z]+)-(?P<number>\d+)(\)|\])"
 
 matching e.g. `"This is a title [KEY-123]"`.
 
-### PythonVerbalExpressions [➚](https://github.com/VerbalExpressions/PythonVerbalExpressions)
+### PythonVerbalExpressions
 
 Partial Python implementation of a cross-language concept.
 
@@ -130,7 +122,7 @@ Notes:
 - No type hinting means that IDE could not offer completions after the first dot.
 
 
-### pregex [➚](https://github.com/manoss96/pregex)
+### pregex
 
 Comprehensive implementation that can support both additive and flow styles.
 
@@ -245,12 +237,14 @@ Notes:
 
 ### kleenexp
 
-Package with ambition and a pedigree.
+Package with ambition.
 
 Example:
 ```python
-"[capture:title 1+ #any] ' ' ['(' | '['] [capture:key [1+ #letter]] '-' [capture:id [1+ #digit]] [')' | ']']"
+"[capture:title 1+ #any] ['(' | '['][capture:key 1+ #letter]-[capture:id 1+ #digit][')' | ']']"
 ```
 
 - "This is a serious attempt to fix something that is broken in the software ecosystem and has been
   broken since before we were born."
+- Generates a standard regex.
+- 

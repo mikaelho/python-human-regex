@@ -115,9 +115,9 @@ pattern = "%{GREEDYDATA:title} [%{WORD:key}-%{NUMBER:id}]"
 
 # kleenexp
 
-pattern = "[capture:title 1+ #any]" ' ['  # ['(' | '['] [capture:key 1+ #letter] '-' [capture:id 1+ #digit] [')' | ']']"
-pattern = "[capture:title 1+ #any] 'is' [capture:key 1+ #any]"
+pattern = "[capture:title 1+ #any] ['(' | '['][capture:key 1+ #letter]-[capture:id 1+ #digit][')' | ']']"
 
 match = ke.match(pattern, STRING_TO_MATCH)
-print(match.groupdict())
-assert match.groupdict() == {'title': 'This is a title', 'key': 'KEY', 'id': 123}
+no_match = ke.match(pattern, STRING_NO_MATCH)
+assert match.groupdict() == {"title": "This is a title", "key": "KEY", "id": "123"}
+assert not no_match
