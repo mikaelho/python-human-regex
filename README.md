@@ -18,12 +18,13 @@ humans" package on PyPI every month.
 ### Look before you leap
 
 I wanted to understand what is available, but a plain web search was not very successful, partly
-because any related search came up with 10 regexp tutorials for every relevant hit. Neither were the
-awesome lists I browsed very helpful - I expected to find a whole section dedicated to these regexp
+because any related search came up with ~10 regexp tutorials for every relevant hit. Neither was
+awesome list browsing very helpful - I expected to find a whole section dedicated to these regexp
 helpers, but found very few listed overall. 
 
-A consequent search through PyPI and Github resulted in the list here. Several packages were left
-out, either because they had no documentation or the last commits were more than 3 years old.
+A consequent search through PyPI and Github resulted in the list below. The list does not cover all
+packages found on PyPI - several packages were left out, either because they were too raw (no
+documentation) or likely dead (last activity more than 3 years ago).
 
 The list could be useful to you if you are:
 - *Looking for a tool*: Check the list to get a quick idea of the "look and feel" of each package.
@@ -85,26 +86,29 @@ Packages with a stated goal of replacing the `re` syntax.
 
 ## And the winner is...
 
-With the disclaimers that I use `re` only intermittently in production contexts, and I have never 
-really used any of the packages in the list, I find a lot of appeal in `simplematch`. I like its
-utter simplicity and the idea that it could take care of some large percentage of cases, after which
-I could fall back to `re` or maybe one of the other packages here. In which case, `kleenexp` looks
-like a promising second candidate.
+With the disclaimers that I a) use `re` only intermittently in production contexts, and b) have
+never really used any of the packages in the list, my two picks from this pack are `simplematch` and
+`kleenexp`. `simplematch` because of the utter simplicity that should cover basic needs without
+reaching for the manual, and `kleenexp` because of a syntax that feels to me like a pretty good
+balance between conciseness and readability.
 
-## Notes
 
-These are my opinionated reseach notes on the packages I found most interesting. For comparison, I
-tried my hand at creating an approximate equivalent to the following simple `re` pattern:
+
+## Research notes
+
+What follows are my opinionated notes, compiled while trying out simple examples on each of the
+packages I found most interesting. To make the examples comparable and easier to understand, each
+tries to match the following simple `re` pattern:
 
 ```regexp
 r"(?P<title>.+) (\(|\[)(?P<key>[A-Z]+)-(?P<number>\d+)(\)|\])"
 ```
 
-matching e.g. `"This is a title [KEY-123]"`.
+... matching e.g. `"This is a title [KEY-123]"`.
 
 ### PythonVerbalExpressions
 
-Partial Python implementation of a cross-language concept.
+Unfinished Python implementation of a cross-language concept.
 
 Example:
 ```python
