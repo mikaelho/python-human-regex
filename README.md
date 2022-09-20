@@ -247,4 +247,3 @@ Example:
 - "This is a serious attempt to fix something that is broken in the software ecosystem and has been
   broken since before we were born."
 - Generates a standard regex.
-- 
