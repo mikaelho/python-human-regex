@@ -1,6 +1,7 @@
 import re
 
 import humre
+import ke
 import simplematch
 from humre import CLOSE_BRACKET
 from humre import CLOSE_PARENTHESIS
@@ -112,3 +113,11 @@ pattern = "%{GREEDYDATA:title} [%{WORD:key}-%{NUMBER:id}]"
 # assert match == {'title': 'This is a title', 'key': 'KEY', 'id': 123}, match
 # assert not no_match
 
+# kleenexp
+
+pattern = "[capture:title 1+ #any]" ' ['  # ['(' | '['] [capture:key 1+ #letter] '-' [capture:id 1+ #digit] [')' | ']']"
+pattern = "[capture:title 1+ #any] 'is' [capture:key 1+ #any]"
+
+match = ke.match(pattern, STRING_TO_MATCH)
+print(match.groupdict())
+assert match.groupdict() == {'title': 'This is a title', 'key': 'KEY', 'id': 123}

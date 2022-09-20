@@ -3,7 +3,7 @@
 
 ## Introduction
 
-### We seem to want a more "human" alternative to the regex syntax
+### We do seem to want a more "human" alternative to the regex syntax
 
 `re` package is a powerful string-matching tool, conveniently included in Python standard library.
 You could say that especially with
@@ -17,85 +17,98 @@ humans" package on PyPI every month.
 
 ### Look before you leap
 
-Instead of writing my own, I wanted to take a look at what is already there.
+I wanted to understand what is available, but a plain web search was not very successful, partly
+because any related search came up with 10 regexp tutorials for every relevant hit. Neither were the
+awesome lists I browsed very helpful - I expected to find a whole section dedicated to these regexp
+helpers, but found very few listed overall. 
 
-I started with awesome lists, but to my surprise the awesome lists I visited did not have a separate 
-section for regular expressions, even if by numbers they would certainly warrant one.
+A consequent search through PyPI and Github resulted in the list here. Several packages were left
+out, either because they had no documentation or the last commits were more than 3 years old.
 
-A consequent search through PyPI and Github resulted in the list here, compiling my opinionated
-research notes on the main options.
-
-If you are:
-- Looking for a tool: Check the list to get a quick idea of the "look and feel" of each package.
-- Thinking about building a tool: Check the list for alternative approaches, and maybe consider if
+The list could be useful to you if you are:
+- *Looking for a tool*: Check the list to get a quick idea of the "look and feel" of each package.
+- *Thinking about building a tool*: Check the list for alternative approaches, and maybe consider if
   contributing to an existing package might be a better way to get what you need.
-- Building a tool, or already have one: Use the list to clarify and communicate what the main
-  differences and strengths of your solution will be.
-
-### Types
-
-I have divided the packages I found into the following non-scientific and possibly overlapping
-categories:
-
-
-#### 1. Regular expression generation
-
-Examples:
-[PythonVerbalExpressions](https://github.com/VerbalExpressions/PythonVerbalExpressions),
-[pregex](https://github.com/manoss96/pregex), [humre](https://github.com/asweigart/humre),
-[edify](https://github.com/luciferreeves/edify), [mre](https://github.com/alvarofpp/mre),
-[regularize](https://github.com/georgepsarakis/regularize),
-[objective_regex](https://github.com/VRGhost/objective_regex),
-[re_patterns](https://github.com/Nagidal/re_patterns),
-[reggie-dsl](https://github.com/romilly/reggie-dsl),
-[gekkota](https://github.com/courage-tci/gekkota), etc.
-
-This seems to be the category with most examples, by far. Basic idea here is that instead of
-`compile(r"\d+")`, you have e.g. `one_or_more(digit)`, and thus something that is easier to read and
-easier to maintain, even if much more verbose.
-
-The challenge is that you still need to be a "regex expert" to build expressions that
-actually do what you thought they would do. But if you are lucky, though, you can find something
-like `email()` in one these, all ready and matching your use case.
-
-
-#### 2. String parsing
-
-Examples: [parse](https://github.com/r1chardj0n3s/parse),
-[simplematch](https://github.com/tfeldmann/simplematch),
-[pygrok](https://github.com/garyelephant/pygrok)
-
-These packages focus on having a very clear and simple syntax for the pattern string, at the cost of
-versatility.
-
-
-#### 3. Alternate syntax
-
-Examples: [kleenex](https://github.com/sonoflilit/kleenexp),
-[reb](https://github.com/workingenius/reb),
-[abnormal-expressions](https://github.com/Buscedv/abnormal-expressions)
-
-These packages focus on providing an alternative syntax that is intended to be comparable and in
-some way superior to the regular expression syntax, with a similar level of completeness and
-generality. Simplicity is probably not your main driver for picking one of these.
-
+- *Building a tool, or already have one*: Use the list to clarify and communicate what the main
+  differences and strengths of your solution are.
 
 ## Packages
 
-Following tables show examples of several packages per category. To get a quick impression of what 
-each looks like in use, we use the same simple matcher that in `re` would be:
+Please see below for quick samples of the packages I found, divided into non-scientific groups based
+on overall style or goals.
+
+Asterisks link to additional notes after the list.
+
+
+#### 1. Flow-style regular expression generation
+
+Functional flow style of dotted function chains.
+
+- **PythonVerbalExpressions** [➚](https://github.com/VerbalExpressions/PythonVerbalExpressions) ﹣
+  `VerEx().anything().then(" ").then("[").OR("(").anything()` [***](#pythonverbalexpressions)
+- **edify** [➚](https://github.com/luciferreeves/edify) ﹣
+  `RegexBuilder().optional().string("0x").capture().exactly(4).range("A", "F")`
+- **mre** [➚](https://github.com/alvarofpp/mre) ﹣
+  `Regex(Set(Regex("0-9")).quantifier(5), Regex("-").quantifier(0, 1)`
+- **regularize** [➚](https://github.com/georgepsarakis/regularize) ﹣
+  `pattern().literal('application.').any_number().quantify(minimum=1).case_insensitive()`
+- **re_patterns** [➚](https://github.com/Nagidal/re_patterns) ﹣
+  `Rstr("Isaac").not_followed_by("Newton").named("non_newtonians")`
+
+#### 2. Plus-style regular expression generation
+
+Building the regex with `+` (and `|` in some cases).
+
+- **pregex** [➚](https://github.com/manoss96/pregex) ﹣
+  `Capture(OneOrMore(AnyUppercaseLetter())) + " " + Either("(", "[")` [***](#pregex)
+- **humre** [➚](https://github.com/asweigart/humre) ﹣
+  `group(SOMETHING) + " " + noncap_group(either(OPEN_PARENTHESIS, OPEN_BRACKET))` [***](#humre)
+- **objective_regex** [➚](https://github.com/VRGhost/objective_regex) ﹣
+  `Text("hello").times.any() + Raw("\s").times(5) + Text("world!").times.many()`
+- **reggie-dsl** [➚](https://github.com/romilly/reggie-dsl) ﹣
+  `dd = multiple(digit, 2, 2); name(dd + slash + dd + slash + year, 'date')`
+- **reb** [➚](https://github.com/workingenius/reb) ﹣
+  `"n(nic(':/?#'), 1) + ':' + n01('//' + n(nic('/?#'))) + n(nic('?#'))"`
+
+#### 3. Format strings
+
+Focus on simple matching on sections of input, rather than full `re` functionality.
+
+- **parse** [➚](https://github.com/r1chardj0n3s/parse) ﹣
+  `"To get {amount:d} {item:w}, meet me at {time:tg}"` [***](#parse)
+- **simplematch** [➚](https://github.com/tfeldmann/simplematch) ﹣
+  `"To get {amount:int} {item}, meet me at {time}"` [***](#simplematch)
+- **pygrok** [➚](https://github.com/garyelephant/pygrok) ﹣
+  `"To get %{NUMBER:amount} %{WORD:item}, meet me at %{DATESTAMP:time}"`
+
+#### 4. Full re syntax replacements
+
+Packages with a stated goal of replacing the `re` syntax.
+
+- **kleenexp** [➚](https://github.com/sonoflilit/kleenexp) ﹣
+  `"Hello. My name is [capture:name]. You killed my ['Father' | 'Hamster']. Prepare to die."`
+  [***](#kleenexp)
+- **abnormal-expressions** [➚](https://github.com/Buscedv/abnormal-expressions) ﹣
+  `'{[w "._-"]1++} "@" {[w "."]1++}'`
+
+## And the winner is...
+
+With the disclaimers that I use `re` only intermittently in production contexts, and I have never 
+really used any of the packages in the list, I find a lot of appeal in `simplematch`. I like its
+utter simplicity and the idea that it could take care of some large percentage of cases, after which
+I could fall back to `re` or maybe one of the other packages here. In which case, `kleenexp` looks
+like a promising second candidate.
+
+## Notes
+
+These are my opinionated reseach notes on the packages I found most interesting. For comparison, I
+tried my hand at creating an approximate equivalent to the following simple `re` pattern:
 
 ```regexp
-r"r"(?P<title>.+) (\(|\[)(?P<key>[A-Z]+)-(?P<number>\d+)(\)|\])""
+r"(?P<title>.+) (\(|\[)(?P<key>[A-Z]+)-(?P<number>\d+)(\)|\])"
 ```
 
 matching e.g. `"This is a title [KEY-123]"`.
-
-Issues or PRs are very welcome, if you want to fix or expand the list.
-
-
-### 1. Regular expression generation
-
 
 ### PythonVerbalExpressions [➚](https://github.com/VerbalExpressions/PythonVerbalExpressions)
 
@@ -104,16 +117,7 @@ Partial Python implementation of a cross-language concept.
 Example:
 ```python
 pattern = (
-    VerEx().
-    anything().
-    then(" ").
-    then("[").
-    OR("(").
-    anything().
-    then("-").
-    anything().
-    then("]").
-    OR(")")
+    VerEx().anything().then(" ").then("[").OR("(").anything().then("-").anything().then("]").OR(")")
 )
 ```
 
@@ -161,7 +165,7 @@ Notes:
   or pre-made regexs.
 
 
-### humre [➚](https://github.com/asweigart/humre)
+### humre
 
 Straight-forward regexp construction.
 
@@ -187,10 +191,7 @@ Notes:
 - No support for named capture groups.
 - Took the most time for me fighting with this to get the result I wanted.
 
-
-### 2. String parsing
-
-### parse [➚](https://github.com/r1chardj0n3s/parse)
+### parse
 
 "`parse()` is the opposite of `format()`"
 
@@ -208,7 +209,7 @@ Notes:
 - If there is no match, nothing is returned, and there is no regex to print out to determine what
   went wrong.
 
-### simplematch [➚](https://github.com/tfeldmann/simplematch)
+### simplematch
 
 As simple as it gets.
 
@@ -218,16 +219,16 @@ Example:
 ```
 
 Notes:
-- Delivers on the promised simplicity, you probably do not need to reach for the docs when using it.
-- Return value is just a dictionary, so no need to wonder how to get the actual matches out of the
+- Just `*` for anything and `{}` for the matching groups, this package delivers on the promised
+  simplicity. You probably do not need to reach for the docs when using it.
+- Return value is just a dictionary, so no need to remember how to get the actual matches out of the
   return value.
-- Downside of the focus on simplicity is that there is no support for matching "either this or
-  that", optional or a specific number of characters, or for searching several matches within a
-  string.
-- But there is support for defining specific format matchers as regexes (which seems a bit ironic
-  to me).
+- But, simple is simple: there is no support for matching "either this or that", optional characters
+  or a specific number of characters, or for searching several matches within a string. New matchers
+  (within the braces) can be defined with a regex, so you could in theory fall back to the full
+  syntax of re when needed.
 
-### pygrok [➚](https://github.com/garyelephant/pygrok)
+### pygrok
 
 For those who grok grok?
 
@@ -241,3 +242,15 @@ Notes:
 - Which is probably because pygrok had last commits in 2016.
 - Includes a large [library](https://github.com/garyelephant/pygrok/tree/master/pygrok/patterns) of
   regular expressions as reusable patterns.
+
+### kleenexp
+
+Package with ambition and a pedigree.
+
+Example:
+```python
+"[capture:title 1+ #any] ' ' ['(' | '['] [capture:key [1+ #letter]] '-' [capture:id [1+ #digit]] [')' | ']']"
+```
+
+- "This is a serious attempt to fix something that is broken in the software ecosystem and has been
+  broken since before we were born."
