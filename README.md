@@ -77,12 +77,13 @@ Focus on simple matching on sections of input, rather than full `re` functionali
 
 #### 4. Full re syntax replacements
 
-Packages with a stated goal of replacing the `re` syntax.
+Packages with a stated goal of expanding or completely replacing the `re` syntax.
 
-| Package                  | Github                                               | Sample                                                     | Notes               |
-|--------------------------|------------------------------------------------------|------------------------------------------------------------|---------------------|
-| **kleenexp**             | [➚](https://github.com/sonoflilit/kleenexp)          | `"[#open=['('] #close=[')'] #open [0+ not #close] #open]"` | [***](#kleenexp)    |
-| **abnormal-expressions** | [➚](https://github.com/Buscedv/abnormal-expressions) | `'{[w "._-"]1++} "@" {[w "."]1++}'`                        | [***](#simplematch) |
+| Package                  | Github                                               | Sample                                                       | Notes               |
+|--------------------------|------------------------------------------------------|--------------------------------------------------------------|---------------------|
+| **regex**                | [➚](https://github.com/mrabarnett/mrab-regex)        | `"(?(DEFINE)(?P<quant>\d+)(?P<item>\w+))(?&quant) (?&item)"` | [***](#regex)       |
+| **kleenexp**             | [➚](https://github.com/sonoflilit/kleenexp)          | `"[#open=['('] #close=[')'] #open [0+ not #close] #open]"`   | [***](#kleenexp)    |
+| **abnormal-expressions** | [➚](https://github.com/Buscedv/abnormal-expressions) | `'{[w "._-"]1++} "@" {[w "."]1++}'`                          | [***](#simplematch) |
 
 ## And the winner is...
 
@@ -241,6 +242,23 @@ Notes:
 - Includes a large [library](https://github.com/garyelephant/pygrok/tree/master/pygrok/patterns) of
   regular expressions as reusable patterns.
 
+### regex
+
+Same but better.
+
+Example:
+```python
+r"(?P<title>.+) (\(|\[)(?P<key>[A-Z]+)-(?P<number>\d+)(\)|\])"
+```
+
+Notes:
+- Arguably not part of this compilation as it does not actively attempt to be "easier" version of
+  the `re`, just "better".
+- Takes the standard library `re` and improves it in different ways, including full unicode case
+  folding, nested sets and set operations etc.
+- Has two versions, where the first is backwards compatible with `re`, and the second pushes the
+  boundaries.
+
 ### kleenexp
 
 Package with ambition.
@@ -250,6 +268,7 @@ Example:
 "[capture:title 1+ #any] ['(' | '['][capture:key 1+ #letter]-[capture:id 1+ #digit][')' | ']']"
 ```
 
+Notes:
 - "This is a serious attempt to fix something that is broken in the software ecosystem and has been
   broken since before we were born."
 - Generates a standard regex.
