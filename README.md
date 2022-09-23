@@ -254,9 +254,10 @@ r"(?P<title>.+) (\(|\[)(?P<key>[A-Z]+)-(?P<number>\d+)(\)|\])"
 Notes:
 - Arguably not part of this compilation as it does not actively attempt to be "easier" version of
   the `re`, just "better".
+- Referred to in the `re` documentation.
 - Takes the standard library `re` and improves it in different ways, including full unicode case
   folding, nested sets and set operations etc.
-- Has two versions, where the first is backwards compatible with `re`, and the second pushes the
+- Has two versions, where the first is backwards compatible with `re` and the second pushes the
   boundaries.
 
 ### kleenexp
