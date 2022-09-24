@@ -21,6 +21,7 @@ from pregex.core.classes import AnyUppercaseLetter
 from pregex.core.groups import Capture
 from pregex.core.operators import Either
 from pregex.core.quantifiers import OneOrMore
+from scanf import scanf
 from verbalexpressions import VerEx
 
 STRING_TO_MATCH = "This is a title [KEY-123]"
@@ -81,6 +82,16 @@ no_match = compiled.match(STRING_NO_MATCH)
 
 assert match.groups() == ('This is a title', 'KEY', '123')
 assert not no_match
+
+# scanf
+
+pattern = "%s [%s-%d]"
+
+result = scanf(pattern, STRING_TO_MATCH)
+result_no_parse = parse(pattern, STRING_NO_MATCH)
+
+assert result == ("title", "KEY", 123)
+assert not result_no_parse
 
 # parse
 

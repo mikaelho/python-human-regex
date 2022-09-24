@@ -4,4 +4,5 @@ parse==1.19.0
 pregex==2.1.1
 pygrok==1.0.0
 regex==2022.9.13
+scanf==1.5.2
 simplematch==1.3

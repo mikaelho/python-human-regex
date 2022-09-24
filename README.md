@@ -3,7 +3,7 @@
 
 ## Introduction
 
-### We do seem to want a more "human" alternative to the regex syntax
+### We do seem to want more "human" alternatives to the regex syntax
 
 `re` package is a powerful string-matching tool, conveniently included in Python standard library.
 You could say that especially with
@@ -69,11 +69,12 @@ Building the regex with `+` (and `|` in some cases).
 
 Focus on simple matching on sections of input, rather than full `re` functionality.
 
-| Package           | Github                                        | Sample                                                                 | Notes               |
-|-------------------|-----------------------------------------------|------------------------------------------------------------------------|---------------------|
-| **parse**         | [➚](https://github.com/r1chardj0n3s/parse)    | `"To get {amount:d} {item:w}, meet me at {time:tg}"`                   | [***](#parse)       |
-| **simplematch**   | [➚](https://github.com/tfeldmann/simplematch) | `"To get {amount:int} {item}, meet me at {time}"`                      | [***](#simplematch) |
-| **pygrok**        | [➚](https://github.com/garyelephant/pygrok)   | `"To get %{NUMBER:amount} %{WORD:item}, meet me at %{DATESTAMP:time}"` |                     |
+| Package         | Github                                        | Sample                                                                 | Notes               |
+|-----------------|-----------------------------------------------|------------------------------------------------------------------------|---------------------|
+| **scanf**       | [➚](https://github.com/joshburnett/scanf)     | `"Power: %f [%], %s, temp: %f"`                                        | [***](#scanf)       |
+| **parse**       | [➚](https://github.com/r1chardj0n3s/parse)    | `"To get {amount:d} {item:w}, meet me at {time:tg}"`                   | [***](#parse)       |
+| **simplematch** | [➚](https://github.com/tfeldmann/simplematch) | `"To get {amount:int} {item}, meet me at {time}"`                      | [***](#simplematch) |
+| **pygrok**      | [➚](https://github.com/garyelephant/pygrok)   | `"To get %{NUMBER:amount} %{WORD:item}, meet me at %{DATESTAMP:time}"` |                     |
 
 #### 4. Full re syntax replacements
 
@@ -194,6 +195,22 @@ Notes:
 - Nice cheat sheets for quick function lookup.
 - No support for named capture groups.
 - Took the most time for me fighting with this to get the result I wanted.
+
+### scanf
+
+Python version of [scanf](http://en.wikipedia.org/wiki/Scanf).
+
+Example:
+```python
+"%s [%s-d]"
+```
+
+Notes:
+- One of the top 1% PyPI critical packages by downloads, so has wide adoption for its use case 
+  despite not having been updated since 2018.
+- Focused on picking numbers out of the input. In our example case, I could not find a way to match
+  the full varying-length title part of the example (`%s` matches single words).
+- Ideal if you already know scanf by heart.
 
 ### parse
 
