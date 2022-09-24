@@ -87,15 +87,16 @@ Packages with a stated goal of expanding or completely replacing the `re` syntax
 
 ## And the winner is...
 
-With the disclaimers that I a) use `re` only intermittently in production contexts, and b) have
+... with the disclaimers that I a) use `re` only intermittently in production contexts, and b) have
 never really used any of the packages in the list:
 
 My two picks from this pack are `simplematch` and `kleenexp`. `simplematch` because of the utter
 simplicity that should cover basic needs without reaching for the manual, and `kleenexp` because of
 a syntax that feels to me like a pretty good balance between conciseness and readability.
 
-The star counts mentioned for some of the packages are probably not the only things on this page
-that will soon prove incorrect. Issues or PRs are highly welcome.
+Overall, it is highly probable that we will never converge on any of these packages in a big way,
+because the definitions of "easy", "intuitive", "clear" and "productive" are highly subjective, and
+it only takes 200-300 lines of code to roll your own.
 
 ## Research notes
 
@@ -108,6 +109,9 @@ r"(?P<title>.+) (\(|\[)(?P<key>[A-Z]+)-(?P<number>\d+)(\)|\])"
 ```
 
 ... matching e.g. `"This is a title [KEY-123]"`.
+
+The star counts mentioned for some of the packages are probably not the only things on this page
+that will soon prove incorrect. Issues or PRs are highly welcome.
 
 ### PythonVerbalExpressions
 
