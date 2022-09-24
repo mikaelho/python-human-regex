@@ -74,17 +74,17 @@ Focus on simple matching on sections of input, rather than full `re` functionali
 | **scanf**       | [➚](https://github.com/joshburnett/scanf)     | `"Power: %f [%], %s, temp: %f"`                                        | [***](#scanf)       |
 | **parse**       | [➚](https://github.com/r1chardj0n3s/parse)    | `"To get {amount:d} {item:w}, meet me at {time:tg}"`                   | [***](#parse)       |
 | **simplematch** | [➚](https://github.com/tfeldmann/simplematch) | `"To get {amount:int} {item}, meet me at {time}"`                      | [***](#simplematch) |
-| **pygrok**      | [➚](https://github.com/garyelephant/pygrok)   | `"To get %{NUMBER:amount} %{WORD:item}, meet me at %{DATESTAMP:time}"` |                     |
+| **pygrok**      | [➚](https://github.com/garyelephant/pygrok)   | `"To get %{NUMBER:amount} %{WORD:item}, meet me at %{DATESTAMP:time}"` | [***](#pygrok)      |
 
 #### 4. Full re syntax replacements
 
 Packages with a stated goal of expanding or completely replacing the `re` syntax.
 
-| Package                  | Github                                               | Sample                                                       | Notes               |
-|--------------------------|------------------------------------------------------|--------------------------------------------------------------|---------------------|
-| **regex**                | [➚](https://github.com/mrabarnett/mrab-regex)        | `"(?(DEFINE)(?P<quant>\d+)(?P<item>\w+))(?&quant) (?&item)"` | [***](#regex)       |
-| **kleenexp**             | [➚](https://github.com/sonoflilit/kleenexp)          | `"[#open=['('] #close=[')'] #open [0+ not #close] #open]"`   | [***](#kleenexp)    |
-| **abnormal-expressions** | [➚](https://github.com/Buscedv/abnormal-expressions) | `'{[w "._-"]1++} "@" {[w "."]1++}'`                          | [***](#simplematch) |
+| Package                  | Github                                               | Sample                                                       | Notes            |
+|--------------------------|------------------------------------------------------|--------------------------------------------------------------|------------------|
+| **regex**                | [➚](https://github.com/mrabarnett/mrab-regex)        | `"(?(DEFINE)(?P<quant>\d+)(?P<item>\w+))(?&quant) (?&item)"` | [***](#regex)    |
+| **kleenexp**             | [➚](https://github.com/sonoflilit/kleenexp)          | `"[#open=['('] #close=[')'] #open [0+ not #close] #open]"`   | [***](#kleenexp) |
+| **abnormal-expressions** | [➚](https://github.com/Buscedv/abnormal-expressions) | `'{[w "._-"]1++} "@" {[w "."]1++}'`                          |                  |
 
 ## And the winner is...
 
