@@ -90,9 +90,10 @@ Packages with a stated goal of expanding or completely replacing the `re` syntax
 ... with the disclaimers that I a) use `re` only intermittently in production contexts, and b) have
 never really used any of the packages in the list:
 
-My two picks from this pack are `simplematch` and `kleenexp`. `simplematch` because of the utter
-simplicity that should cover basic needs without reaching for the manual, and `kleenexp` because of
-a syntax that feels to me like a pretty good balance between conciseness and readability.
+For everyday casual use, my two picks for from this pack are `simplematch` and `kleenexp`.
+`simplematch` because of the utter simplicity that should cover basic needs without reaching for the
+manual, and `kleenexp` because of a syntax that feels to me like a pretty good balance between
+conciseness and readability.
 
 Overall, it is highly probable that we will never converge on any of these packages in a big way,
 because the definitions of "easy", "intuitive", "clear" and "productive" are highly subjective, and
