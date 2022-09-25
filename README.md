@@ -75,6 +75,7 @@ Focus on simple matching on sections of input, rather than full `re` functionali
 | **parse**       | [➚](https://github.com/r1chardj0n3s/parse)    | `"To get {amount:d} {item:w}, meet me at {time:tg}"`                   | [***](#parse)       |
 | **simplematch** | [➚](https://github.com/tfeldmann/simplematch) | `"To get {amount:int} {item}, meet me at {time}"`                      | [***](#simplematch) |
 | **pygrok**      | [➚](https://github.com/garyelephant/pygrok)   | `"To get %{NUMBER:amount} %{WORD:item}, meet me at %{DATESTAMP:time}"` | [***](#pygrok)      |
+| **qre**         | [➚](https://github.com/mikaelho/qre)          | `"Value: [quantitative:float]&vert;[qualitative]"`                     |                     |
 
 #### 4. Full re syntax replacements
 
