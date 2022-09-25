@@ -189,7 +189,7 @@ pattern = (
 ```
 
 Notes:
-- 250 stars, very recent and well publicized.
+- 250 stars, very recent.
 - Seems well suited if you are used to writing a `re` regex and just write `humre` instead, as the
   conversion seems quite natural. On the flipside, I managed to write a non-compiling regex with
   humre, something I did not manage with the other packages here.
