@@ -57,13 +57,14 @@ Functional flow style of dotted function chains.
 
 Building the regex with `+` (and `|` in some cases).
 
-| Package             | Github                                          | Sample                                                                          | Notes          |
-|---------------------|-------------------------------------------------|---------------------------------------------------------------------------------|----------------|
-| **prerex**          | [➚](https://github.com/manoss96/pregex)         | `Capture(OneOrMore(AnyUppercaseLetter())) + " " + Either("(", "[")`             | [***](#pregex) |
-| **humre**           | [➚](https://github.com/asweigart/humre)         | `group(SOMETHING) + " " + noncap_group(either(OPEN_PARENTHESIS, OPEN_BRACKET))` | [***](#humre)  |
-| **objective_regex** | [➚](https://github.com/VRGhost/objective_regex) | `Text("hello").times.any() + Raw("\s").times(5) + Text("world!").times.many()`  |                |
-| **reggie-dsl**      | [➚](https://github.com/romilly/reggie-dsl)      | `dd = multiple(digit, 2, 2); name(dd + slash + dd + slash + year, 'date')`      |                |
-| **reb**             | [➚](https://github.com/workingenius/reb)        | `"n(nic(':/?#'), 1) + ':' + n01('//' + n(nic('/?#'))) + n(nic('?#'))"`          |                |
+| Package             | Github                                          | Sample                                                                          | Notes                  |
+|---------------------|-------------------------------------------------|---------------------------------------------------------------------------------|------------------------|
+| **prerex**          | [➚](https://github.com/manoss96/pregex)         | `Capture(OneOrMore(AnyUppercaseLetter())) + " " + Either("(", "[")`             | [***](#pregex)         |
+| **humre**           | [➚](https://github.com/asweigart/humre)         | `group(SOMETHING) + " " + noncap_group(either(OPEN_PARENTHESIS, OPEN_BRACKET))` | [***](#humre)          |
+| **bourbaki.regex**  | [➚](https://github.com/bourbaki-py/regex)       | `"hello" + L(",").optional + Whitespace[1:] + "world" + L("!").optional`        | [***](#bourbaki-regex) |
+| **objective_regex** | [➚](https://github.com/VRGhost/objective_regex) | `Text("hello").times.any() + Raw("\s").times(5) + Text("world!").times.many()`  |                        |
+| **reggie-dsl**      | [➚](https://github.com/romilly/reggie-dsl)      | `dd = multiple(digit, 2, 2); name(dd + slash + dd + slash + year, 'date')`      |                        |
+| **reb**             | [➚](https://github.com/workingenius/reb)        | `"n(nic(':/?#'), 1) + ':' + n01('//' + n(nic('/?#'))) + n(nic('?#'))"`          |                        |
 
 #### 3. Format strings
 
@@ -196,6 +197,48 @@ Notes:
 - Nice cheat sheets for quick function lookup.
 - No support for named capture groups.
 - Took the most time for me fighting with this to get the result I wanted.
+
+
+### bourbaki.regex
+
+Example:
+```regexp
+r"(?P<title>.+) (\(|\[)(?P<key>[A-Z]+)-(?P<number>\d+)(\)|\])"
+```
+```python
+uppercase_word = C["A":"Z"][1:]
+number = Digit[1:]
+pattern = (
+    ANYCHAR[1:] ("title") + 
+    " [" +
+    uppercase_word ("key") + 
+    "-" +
+    number ("number") +
+    "]"
+)
+pattern.fullmatch("This is a title [KEY-123]").groupdict()
+# {'title': 'This is a title', 'key': 'KEY', 'number': '123'}
+```
+
+Notes:
+- Supports all standard regex constructs from the `re` module:
+  - Named and anonymous capture groups
+  - Back-references (specifiable as references to other literal regex objects in your code)
+  - Lookahead and lookbehind assertions
+  - If/else conditions
+  - local sub-pattern compilation flags (e.g. `re.IGNORECASE`)
+- Also optionally supports some extended options from the more featureful `regex`:
+  - Variable-length lookbehind assertions (also statically checks that you _don't_ do this when using `re`)
+  - Atomic groups (also supports this through a back-reference trick when using `re` - you don't have to remember this trick)
+- Static validation of patterns
+  - Referential integrity of back-references when specified either by name or by python object reference.
+  - Length constraints on lookbehind assertions (in case the implementation, like `re`, doesn't support variable length here)
+- Composition optimization
+  - E.g. alternation of a set of character classes results in a single character class rather than a syntactic alternation:
+    `C["a":"z"] | C["0": "9"]` transpiles to `[a-z0-9]` and not e.g. `[a-z]|[0-9]` which could be slightly less efficient and readable.
+- Transpiles to standard regex patterns which you can acccess via `.pattern` (raw string) or `.compile()` (compiled regex) in
+  case you want to use the library only for composition of patterns and not matching.
+
 
 ### scanf
 
