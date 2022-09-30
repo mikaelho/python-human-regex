@@ -59,7 +59,7 @@ Building the regex with `+` (and `|` in some cases).
 
 | Package             | Github                                          | Sample                                                                          | Notes                  |
 |---------------------|-------------------------------------------------|---------------------------------------------------------------------------------|------------------------|
-| **prerex**          | [➚](https://github.com/manoss96/pregex)         | `Capture(OneOrMore(AnyUppercaseLetter())) + " " + Either("(", "[")`             | [***](#pregex)         |
+| **pregex**          | [➚](https://github.com/manoss96/pregex)         | `Capture(OneOrMore(AnyUppercaseLetter())) + " " + Either("(", "[")`             | [***](#pregex)         |
 | **humre**           | [➚](https://github.com/asweigart/humre)         | `group(SOMETHING) + " " + noncap_group(either(OPEN_PARENTHESIS, OPEN_BRACKET))` | [***](#humre)          |
 | **bourbaki.regex**  | [➚](https://github.com/bourbaki-py/regex)       | `"hello" + L(",").optional + Whitespace[1:] + "world" + L("!").optional`        | [***](#bourbaki-regex) |
 | **objective_regex** | [➚](https://github.com/VRGhost/objective_regex) | `Text("hello").times.any() + Raw("\s").times(5) + Text("world!").times.many()`  |                        |
@@ -201,10 +201,9 @@ Notes:
 
 ### bourbaki.regex
 
+Comprehensive implementation combining additive and flow styles with syntax that can be quite terse or more verbose as needed.
+
 Example:
-```regexp
-r"(?P<title>.+) (\(|\[)(?P<key>[A-Z]+)-(?P<number>\d+)(\)|\])"
-```
 ```python
 uppercase_word = C["A":"Z"][1:]
 number = Digit[1:]
