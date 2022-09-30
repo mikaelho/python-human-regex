@@ -229,14 +229,15 @@ Notes:
 - Also optionally supports some extended options from the more featureful `regex`:
   - Variable-length lookbehind assertions (also statically checks that you _don't_ do this when using `re`)
   - Atomic groups (also supports this through a back-reference trick when using `re` - you don't have to remember this trick)
-- Static validation of patterns
+- Static validation of patterns with nice error messages
   - Referential integrity of back-references when specified either by name or by python object reference.
   - Length constraints on lookbehind assertions (in case the implementation, like `re`, doesn't support variable length here)
-- Composition optimization
+- Compositional syntax optimizations
   - E.g. alternation of a set of character classes results in a single character class rather than a syntactic alternation:
     `C["a":"z"] | C["0": "9"]` transpiles to `[a-z0-9]` and not e.g. `[a-z]|[0-9]` which could be slightly less efficient and readable.
 - Transpiles to standard regex patterns which you can acccess via `.pattern` (raw string) or `.compile()` (compiled regex) in
-  case you want to use the library only for composition of patterns and not matching.
+  case you want to use the library only for composition of patterns and not matching. Otherwise you can access all the usual methods
+  on the regex object itself (`match`, `search`, `fullmatch`, etc).
 
 
 ### scanf
