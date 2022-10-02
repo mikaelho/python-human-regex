@@ -43,7 +43,7 @@ Asterisks link to additional notes after the list.
 
 #### 1. Flow-style regular expression generation
 
-Functional flow style of dotted function chains.
+Functional/fluent style of dotted function chains.
 
 | Package                     | Github                                                            | Sample                                                                                     | Notes                           |
 |-----------------------------|-------------------------------------------------------------------|--------------------------------------------------------------------------------------------|---------------------------------|
@@ -55,7 +55,7 @@ Functional flow style of dotted function chains.
 
 #### 2. Plus-style regular expression generation
 
-Building the regex with `+` (and `|` in some cases).
+Building the regex with adding string or overloaded `+`, `|` and/or `[:]`.
 
 | Package             | Github                                          | Sample                                                                          | Notes                  |
 |---------------------|-------------------------------------------------|---------------------------------------------------------------------------------|------------------------|
@@ -113,6 +113,10 @@ r"(?P<title>.+) (\(|\[)(?P<key>[A-Z]+)-(?P<number>\d+)(\)|\])"
 ```
 
 ... matching e.g. `"This is a title [KEY-123]"`.
+
+All the example patterns in this section are tested. See
+[examples.py](https://github.com/mikaelho/python-human-regex/blob/main/examples.py) if you want a
+quick copy-paste start on using a package.
 
 The star counts mentioned for some of the packages are probably not the only things on this page
 that will soon prove incorrect. Issues or PRs are highly welcome.
@@ -201,44 +205,28 @@ Notes:
 
 ### bourbaki.regex
 
-Comprehensive implementation combining additive and flow styles with syntax that can be quite terse or more verbose as needed.
+Comprehensive and powerful, with the option to use some of the `regex` package features as well
 
 Example:
 ```python
-uppercase_word = C["A":"Z"][1:]
-number = Digit[1:]
 pattern = (
-    ANYCHAR[1:] ("title") + 
+    ANYCHAR[1:] ("title") +
     " [" +
-    uppercase_word ("key") + 
+    C["A":"Z"][1:] ("key") +
     "-" +
-    number ("number") +
+    Digit[1:] ("number") +
     "]"
 )
-pattern.fullmatch("This is a title [KEY-123]").groupdict()
-# {'title': 'This is a title', 'key': 'KEY', 'number': '123'}
 ```
 
 Notes:
-- Supports all standard regex constructs from the `re` module:
-  - Named and anonymous capture groups
-  - Back-references (specifiable as references to other literal regex objects in your code)
-  - Lookahead and lookbehind assertions
-  - If/else conditions
-  - local sub-pattern compilation flags (e.g. `re.IGNORECASE`)
-- Also optionally supports some extended options from the more featureful `regex`:
-  - Variable-length lookbehind assertions (also statically checks that you _don't_ do this when using `re`)
-  - Atomic groups (also supports this through a back-reference trick when using `re` - you don't have to remember this trick)
-- Static validation of patterns with nice error messages
-  - Referential integrity of back-references when specified either by name or by python object reference.
-  - Length constraints on lookbehind assertions (in case the implementation, like `re`, doesn't support variable length here)
-- Compositional syntax optimizations
-  - E.g. alternation of a set of character classes results in a single character class rather than a syntactic alternation:
-    `C["a":"z"] | C["0": "9"]` transpiles to `[a-z0-9]` and not e.g. `[a-z]|[0-9]` which could be slightly less efficient and readable.
-- Transpiles to standard regex patterns which you can acccess via `.pattern` (raw string) or `.compile()` (compiled regex) in
-  case you want to use the library only for composition of patterns and not matching. Otherwise you can access all the usual methods
-  on the regex object itself (`match`, `search`, `fullmatch`, etc).
-
+- Supports both additive and flow/fluent styles and terse/verbose modes. E.g. the use of slice
+  notation to indicate ranges and multiplicity can be replaced with more verbose options.
+- Supports all advanced constructs from the `re` module, including back-references, lookahead, and
+  local sub-pattern compilation flags (e.g. ignore case for only part of the pattern).
+- Optional features from `regex`: variable-length lookbehind assertions and atomic groups.
+- Static validation of patterns with nice error messages, and behind-the-scenes performance
+  optimizations.
 
 ### scanf
 

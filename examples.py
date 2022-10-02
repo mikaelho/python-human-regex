@@ -3,6 +3,9 @@ import re
 import humre
 import ke
 import simplematch
+from bourbaki.regex import ANYCHAR
+from bourbaki.regex import C
+from bourbaki.regex import Digit
 from humre import CLOSE_BRACKET
 from humre import CLOSE_PARENTHESIS
 from humre import DIGIT
@@ -82,6 +85,23 @@ no_match = compiled.match(STRING_NO_MATCH)
 
 assert match.groups() == ('This is a title', 'KEY', '123')
 assert not no_match
+
+# bourbaki.regex
+
+pattern = (
+    ANYCHAR[1:] ("title") +
+    " [" +
+    C["A":"Z"][1:] ("key") +
+    "-" +
+    Digit[1:] ("number") +
+    "]"
+)
+
+result = pattern.match(STRING_TO_MATCH)
+result_no_match = pattern.match(STRING_NO_MATCH)
+
+assert result
+assert not result_no_match
 
 # scanf
 

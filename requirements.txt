@@ -6,3 +6,4 @@ pygrok==1.0.0
 regex==2022.9.13
 scanf==1.5.2
 simplematch==1.3
+bourbaki.regex==0.2.2
