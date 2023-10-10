@@ -47,46 +47,46 @@ Functional/fluent style of dotted function chains.
 
 | Package                     | Github                                                                                                                                                                                                                     | Sample                                                                                     | Notes                           |
 |-----------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------|---------------------------------|
-| **PythonVerbalExpressions** | [![PythonVerbalExpressions](https://img.shields.io/github/stars/VerbalExpressions/PythonVerbalExpressions)](https://github.com/VerbalExpressions/PythonVerbalExpressions)                                                  | `VerEx().anything().then(" ").then("[").OR("(").anything()`                                | [***](#pythonverbalexpressions)                                                                                                                 |
-| **edify**                   | [![edify](https://img.shields.io/github/stars/luciferreeves/edify)](https://github.com/luciferreeves/edify)                                                                                                                | `RegexBuilder().optional().string("0x").capture().exactly(4).range("A", "F")`              |                                 |
-| **mre**                     | [![mre](https://img.shields.io/github/stars/alvarofpp/mre)](https://github.com/alvarofpp/mre)                                                                                                                              | `Regex(Set(Regex("0-9")).quantifier(5), Regex("-").quantifier(0, 1)`                       |                                 |
-| **regularize**              | [![regularize](https://img.shields.io/github/stars/georgepsarakis/regularize)](https://github.com/georgepsarakis/regularize)                                                                                               | `pattern().literal('application.').any_number().quantify(minimum=1).case_insensitive()`    |                                 |
+| **PythonVerbalExpressions** | [![PythonVerbalExpressions](https://img.shields.io/github/stars/VerbalExpressions/PythonVerbalExpressions)](https://github.com/VerbalExpressions/PythonVerbalExpressions) | `VerEx().anything().then(" ").then("[").OR("(").anything()`                                | [***](#pythonverbalexpressions)                                                                                                                 |
+| **edify**                   | [![edify](https://img.shields.io/github/stars/luciferreeves/edify)](https://github.com/luciferreeves/edify) | `RegexBuilder().optional().string("0x").capture().exactly(4).range("A", "F")`              |                                 |
+| **mre**                     | [![mre](https://img.shields.io/github/stars/alvarofpp/mre)](https://github.com/alvarofpp/mre) | `Regex(Set(Regex("0-9")).quantifier(5), Regex("-").quantifier(0, 1)`                       |                                 |
+| **regularize**              | [![regularize](https://img.shields.io/github/stars/georgepsarakis/regularize)](https://github.com/georgepsarakis/regularize) | `pattern().literal('application.').any_number().quantify(minimum=1).case_insensitive()`    |                                 |
 | **re_patterns**             | [![re_patterns](https://img.shields.io/github/stars/Nagidal/re_patterns)](https://github.com/Nagidal/re_patterns) | `Rstr("Isaac").not_followed_by("Newton").named("non_newtonians")`                          |                                 |
 
 #### 2. Plus-style regular expression generation
 
 Building the regex with adding string or overloaded `+`, `|` and/or `[:]`.
 
-| Package             | Github                                          | Sample                                                                          | Notes                  |
-|---------------------|-------------------------------------------------|---------------------------------------------------------------------------------|------------------------|
-| **pregex**          | [➚](https://github.com/manoss96/pregex)         | `Capture(OneOrMore(AnyUppercaseLetter())) + " " + Either("(", "[")`             | [***](#pregex)         |
-| **humre**           | [➚](https://github.com/asweigart/humre)         | `group(SOMETHING) + " " + noncap_group(either(OPEN_PARENTHESIS, OPEN_BRACKET))` | [***](#humre)          |
-| **bourbaki.regex**  | [➚](https://github.com/bourbaki-py/regex)       | `"hello" + L(",").optional + Whitespace[1:] + "world" + L("!").optional`        | [***](#bourbaki-regex) |
-| **objective_regex** | [➚](https://github.com/VRGhost/objective_regex) | `Text("hello").times.any() + Raw("\s").times(5) + Text("world!").times.many()`  |                        |
-| **reggie-dsl**      | [➚](https://github.com/romilly/reggie-dsl)      | `dd = multiple(digit, 2, 2); name(dd + slash + dd + slash + year, 'date')`      |                        |
-| **reb**             | [➚](https://github.com/workingenius/reb)        | `"n(nic(':/?#'), 1) + ':' + n01('//' + n(nic('/?#'))) + n(nic('?#'))"`          |                        |
+| Package             | Github                                                                                                                                    | Sample                                                                          | Notes                  |
+|---------------------|-------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------|------------------------|
+| **pregex**          | [![pregex](https://img.shields.io/github/stars/manoss96/pregex)](https://github.com/manoss96/pregex) | `Capture(OneOrMore(AnyUppercaseLetter())) + " " + Either("(", "[")`             | [***](#pregex)         |
+| **humre**           | [![humre](https://img.shields.io/github/stars/asweigart/humre)](https://github.com/asweigart/humre) | `group(SOMETHING) + " " + noncap_group(either(OPEN_PARENTHESIS, OPEN_BRACKET))` | [***](#humre)          |
+| **bourbaki.regex**  | [![bourbaki.regex](https://img.shields.io/github/stars/bourbaki-py/regex)](https://github.com/bourbaki-py/regex) | `"hello" + L(",").optional + Whitespace[1:] + "world" + L("!").optional`        | [***](#bourbaki-regex) |
+| **objective_regex** | [![objective_regex](https://img.shields.io/github/stars/VRGhost/objective_regex)](https://github.com/VRGhost/objective_regex) | `Text("hello").times.any() + Raw("\s").times(5) + Text("world!").times.many()`  |                        |
+| **reggie-dsl**      | [![reggie-dsl](https://img.shields.io/github/stars/romilly/reggie-dsl)](https://github.com/romilly/reggie-dsl) | `dd = multiple(digit, 2, 2); name(dd + slash + dd + slash + year, 'date')`      |                        |
+| **reb**             | [![reb](https://img.shields.io/github/stars/workingenius/reb)](https://github.com/workingenius/reb) | `"n(nic(':/?#'), 1) + ':' + n01('//' + n(nic('/?#'))) + n(nic('?#'))"`          |                        |
 
 #### 3. Format strings
 
 Focus on simple matching on sections of input, rather than full `re` functionality.
 
-| Package         | Github                                        | Sample                                                                 | Notes               |
-|-----------------|-----------------------------------------------|------------------------------------------------------------------------|---------------------|
-| **scanf**       | [➚](https://github.com/joshburnett/scanf)     | `"Power: %f [%], %s, temp: %f"`                                        | [***](#scanf)       |
-| **parse**       | [➚](https://github.com/r1chardj0n3s/parse)    | `"To get {amount:d} {item:w}, meet me at {time:tg}"`                   | [***](#parse)       |
-| **simplematch** | [➚](https://github.com/tfeldmann/simplematch) | `"To get {amount:int} {item}, meet me at {time}"`                      | [***](#simplematch) |
-| **pygrok**      | [➚](https://github.com/garyelephant/pygrok)   | `"To get %{NUMBER:amount} %{WORD:item}, meet me at %{DATESTAMP:time}"` | [***](#pygrok)      |
-| **qre**         | [➚](https://github.com/mikaelho/qre)          | `"Value: [quantitative:float]&vert;[qualitative]"`                     |                     |
+| Package         | Github                                                                                                                                | Sample                                                                 | Notes               |
+|-----------------|---------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------|---------------------|
+| **scanf**       | [![scanf](https://img.shields.io/github/stars/joshburnett/scanf)](https://github.com/joshburnett/scanf) | `"Power: %f [%], %s, temp: %f"`                                        | [***](#scanf)       |
+| **parse**       | [![parse](https://img.shields.io/github/stars/r1chardj0n3s/parse)](https://github.com/r1chardj0n3s/parse) | `"To get {amount:d} {item:w}, meet me at {time:tg}"`                   | [***](#parse)       |
+| **simplematch** | [![simplematch](https://img.shields.io/github/stars/tfeldmann/simplematch)](https://github.com/tfeldmann/simplematch) | `"To get {amount:int} {item}, meet me at {time}"`                      | [***](#simplematch) |
+| **pygrok**      | [![pygrok](https://img.shields.io/github/stars/garyelephant/pygrok)](https://github.com/garyelephant/pygrok) | `"To get %{NUMBER:amount} %{WORD:item}, meet me at %{DATESTAMP:time}"` | [***](#pygrok)      |
+| **qre**         | [![qre](https://img.shields.io/github/stars/mikaelho/qre)](https://github.com/mikaelho/qre) | `"Value: [quantitative:float]&vert;[qualitative]"`                     |                     |
 
 #### 4. Full re syntax replacements
 
 Packages with a stated goal of expanding or completely replacing the `re` syntax.
 
-| Package                  | Github                                               | Sample                                                       | Notes            |
-|--------------------------|------------------------------------------------------|--------------------------------------------------------------|------------------|
-| **regex**                | [➚](https://github.com/mrabarnett/mrab-regex)        | `"(?(DEFINE)(?P<quant>\d+)(?P<item>\w+))(?&quant) (?&item)"` | [***](#regex)    |
-| **kleenexp**             | [➚](https://github.com/sonoflilit/kleenexp)          | `"[#open=['('] #close=[')'] #open [0+ not #close] #open]"`   | [***](#kleenexp) |
-| **abnormal-expressions** | [➚](https://github.com/Buscedv/abnormal-expressions) | `'{[w "._-"]1++} "@" {[w "."]1++}'`                          |                  |
+| Package                  | Github                                                                                                                                                | Sample                                                       | Notes            |
+|--------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------|------------------|
+| **regex**                | [![regex](https://img.shields.io/github/stars/mrabarnett/mrab-regex)](https://github.com/mrabarnett/mrab-regex) | `"(?(DEFINE)(?P<quant>\d+)(?P<item>\w+))(?&quant) (?&item)"` | [***](#regex)    |
+| **kleenexp**             | [![kleenexp](https://img.shields.io/github/stars/sonoflilit/kleenexp)](https://github.com/sonoflilit/kleenexp) | `"[#open=['('] #close=[')'] #open [0+ not #close] #open]"`   | [***](#kleenexp) |
+| **abnormal-expressions** | [![abnormal-expressions](https://img.shields.io/github/stars/Buscedv/abnormal-expressions)](https://github.com/Buscedv/abnormal-expressions) | `'{[w "._-"]1++} "@" {[w "."]1++}'`                          |                  |
 
 ## And the winner is...
 
