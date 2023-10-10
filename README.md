@@ -45,13 +45,13 @@ Asterisks link to additional notes after the list.
 
 Functional/fluent style of dotted function chains.
 
-| Package                     | Github                                                            | Sample                                                                                     | Notes                           |
-|-----------------------------|-------------------------------------------------------------------|--------------------------------------------------------------------------------------------|---------------------------------|
-| **PythonVerbalExpressions** | [➚](https://github.com/VerbalExpressions/PythonVerbalExpressions) | `VerEx().anything().then(" ").then("[").OR("(").anything()`                                | [***](#pythonverbalexpressions) |
-| **edify**                   | [➚](https://github.com/luciferreeves/edify)                       | `RegexBuilder().optional().string("0x").capture().exactly(4).range("A", "F")`              |                                 |
-| **mre**                     | [➚](https://github.com/alvarofpp/mre)                             | `Regex(Set(Regex("0-9")).quantifier(5), Regex("-").quantifier(0, 1)`                       |                                 |
-| **regularize**              | [➚](https://github.com/georgepsarakis/regularize)                 | `pattern().literal('application.').any_number().quantify(minimum=1).case_insensitive()`    |                                 |
-| **re_patterns**             | [➚](https://github.com/Nagidal/re_patterns)                       | `Rstr("Isaac").not_followed_by("Newton").named("non_newtonians")`                          |                                 |
+| Package                     | Github                                                                                                                                        | Sample                                                                                     | Notes                           |
+|-----------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------|---------------------------------|
+| **PythonVerbalExpressions** | [➚](https://github.com/VerbalExpressions/PythonVerbalExpressions) https://img.shields.io/github/stars/VerbalExpressions/PythonVerbalExpressions | `VerEx().anything().then(" ").then("[").OR("(").anything()`                                | [***](#pythonverbalexpressions)                                                                                                                 |
+| **edify**                   | [➚](https://github.com/luciferreeves/edify) https://img.shields.io/github/stars/luciferreeves/edify                                           | `RegexBuilder().optional().string("0x").capture().exactly(4).range("A", "F")`              |                                 |
+| **mre**                     | [➚](https://github.com/alvarofpp/mre) https://img.shields.io/github/stars/alvarofpp/mre                                                       | `Regex(Set(Regex("0-9")).quantifier(5), Regex("-").quantifier(0, 1)`                       |                                 |
+| **regularize**              | [➚](https://github.com/georgepsarakis/regularize) https://img.shields.io/github/stars/georgepsarakis/regularize | `pattern().literal('application.').any_number().quantify(minimum=1).case_insensitive()`    |                                 |
+| **re_patterns**             | [➚](https://github.com/Nagidal/re_patterns) https://img.shields.io/github/stars/Nagidal/re_patterns | `Rstr("Isaac").not_followed_by("Newton").named("non_newtonians")`                          |                                 |
 
 #### 2. Plus-style regular expression generation
 
