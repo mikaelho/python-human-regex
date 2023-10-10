@@ -133,7 +133,7 @@ pattern = (
 ```
 
 Notes:
-- 1.6k stars but last commit in 2020.
+- Popular but last commit in 2020.
 - Version exists for [almost any language](http://verbalexpressions.github.io), polyglots can in
   theory transfer their knowledge.
 - Python documentation is missing, had to consult the JSVerbalExpressions docs for capture
@@ -162,7 +162,6 @@ Or using the functional/flow syntax:
 
 
 Notes:
-- 600 stars, very recent and active.
 - Supports both plus-style and functional/flow style of building patterns.
 - Has much more verbose imports when compared to other packages sampled here, which means you might
   need to use many * imports to get help from code completion.
@@ -194,7 +193,6 @@ pattern = (
 ```
 
 Notes:
-- 250 stars, very recent.
 - Seems well suited if you are used to writing a `re` regex and just write `humre` instead, as the
   conversion seems quite natural. On the flipside, I managed to write a non-compiling regex with
   humre, something I did not manage with the other packages here.
@@ -254,7 +252,7 @@ Example:
 ```
 
 Notes:
-- 1.5k stars, last commits in early 2021.
+- Active in 2023.
 - Ideal if you are already a power user of the [format specification mini-language](https://docs.python.org/3/library/string.html#format-specification-mini-language).
 - Format specifiers mean that matching values are returned already converted to the right format
   (`id` in the example is returned as an `int`).
@@ -307,7 +305,7 @@ r"(?P<title>.+) (\(|\[)(?P<key>[A-Z]+)-(?P<number>\d+)(\)|\])"
 
 Notes:
 - Arguably not part of this compilation as it does not actively attempt to be "easier" version of
-  the `re`, just "better".
+  the `re`, just more powerful.
 - Referred to in the `re` documentation.
 - Takes the standard library `re` and improves it in different ways, including full unicode case
   folding, nested sets and set operations etc.
