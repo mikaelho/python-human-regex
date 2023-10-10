@@ -146,7 +146,9 @@ pattern = "%{GREEDYDATA:title} [%{WORD:key}-%{NUMBER:id}]"
 
 # kleenexp
 
-pattern = "[capture:title 1+ #any] ['(' | '['][capture:key 1+ #letter]-[capture:id 1+ #digit][')' | ']']"
+pattern = (
+    "[[capture:title 1+ #any] ' ' #tag=[[capture:key #letters] '-' [capture:id #digits]] ['(' #tag ')' | '[' #tag ']']]"
+)
 
 match = ke.match(pattern, STRING_TO_MATCH)
 no_match = ke.match(pattern, STRING_NO_MATCH)

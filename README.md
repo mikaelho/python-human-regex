@@ -320,7 +320,7 @@ Package with ambition.
 
 Example:
 ```python
-"[capture:title 1+ #any] ['(' | '['][capture:key 1+ #letter]-[capture:id 1+ #digit][')' | ']']"
+"[[capture:title 1+ #any] ' ' #tag=[[capture:key #letters] '-' [capture:id #digits]] ['(' #tag ')' | '[' #tag ']']]"
 ```
 
 Notes:
